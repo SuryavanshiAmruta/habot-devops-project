@@ -22,4 +22,3 @@ resource "google_storage_bucket_iam_member" "viewer" {
   bucket = google_storage_bucket.raw_landing.name
   role   = "roles/storage.objectViewer"
   member = "user:amrutasuryavanshi212@gmail.com"
-}
