@@ -1,4 +1,4 @@
-resource "google_storage_bucket_wrong" "raw_landing" {
+resource "google_storage_bucket" "raw_landing" {
   name     = var.bucket_name
   location = "ASIA"
 
