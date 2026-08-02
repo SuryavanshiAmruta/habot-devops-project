@@ -1,6 +1,4 @@
 from django.db import models
-import os
-
 
 class Student(models.Model):
     student_name = models.CharField(max_length=100)
