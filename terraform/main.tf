@@ -18,6 +18,33 @@ resource "google_bigquery_dataset" "staging" {
 
   delete_contents_on_destroy = false
 }
+resource "google_bigquery_table" "student_data" {
+  dataset_id = google_bigquery_dataset.staging.dataset_id
+  table_id   = "student_data"
+
+  schema = <<EOF
+[
+  {
+    "name": "student_name",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "school",
+    "type": "STRING",
+    "mode": "REQUIRED"
+  },
+  {
+    "name": "city",
+    "type": "STRING"
+  },
+  {
+    "name": "age",
+    "type": "INTEGER"
+  }
+]
+EOF
+}
 resource "google_storage_bucket_iam_member" "viewer" {
   bucket = google_storage_bucket.raw_landing.name
   role   = "roles/storage.objectViewer"
