@@ -1,25 +1,17 @@
 from rest_framework import serializers
 
+
 class StudentSerializer(serializers.Serializer):
 
-    student_name = serializers.CharField(
-        max_length=100
-    )
+    student_name = serializers.CharField(max_length=100)
 
-    age = serializers.IntegerField(
-        min_value=3,
-        max_value=18
-    )
+    age = serializers.IntegerField(min_value=3, max_value=18)
 
     email = serializers.EmailField()
 
-    guardian_name = serializers.CharField(
-        max_length=100
-    )
+    guardian_name = serializers.CharField(max_length=100)
 
-    phone = serializers.RegexField(
-        regex=r'^\d{10}$'
-    )
+    phone = serializers.RegexField(regex=r"^\d{10}$")
 
     learning_difficulty = serializers.BooleanField()
 
@@ -32,7 +24,5 @@ class StudentSerializer(serializers.Serializer):
 
     def validate_phone(self, value):
         if not value.isdigit():
-            raise serializers.ValidationError(
-                "Phone number must contain digits only."
-            )
+            raise serializers.ValidationError("Phone number must contain digits only.")
         return value
