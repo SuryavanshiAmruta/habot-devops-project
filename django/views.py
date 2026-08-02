@@ -1,14 +1,19 @@
-from django.db import models
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
+from .serializers import StudentSerializer
 
-class Student(models.Model):
-    student_name = models.CharField(max_length=100)
-    age = models.PositiveIntegerField()
-    email = models.EmailField(unique=True)
-    guardian_name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=10)
-    learning_difficulty = models.BooleanField(default=False)
+API_KEY = "123456789abcdef"
+class StudentAPIView(APIView):
 
-    def __str__(self):
-        return self.student_name
+    def post(self, request):
 
+        serializer = StudentSerializer(data=request.data)
+
+        if serializer.is_valid():
+
+            serializer.save()
+
+            return Response(serializer.data, status=201)
+
+        return Response(serializer.errors, status=400)
