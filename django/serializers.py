@@ -24,5 +24,8 @@ class StudentSerializer(serializers.Serializer):
 
     def validate_phone(self, value):
         if not value.isdigit():
-            raise serializers.ValidationError("Phone number must contain digits only.")
+            raise serializers.ValidationError(
+                "Phone number must contain digits only."
+            )
         return value
+
