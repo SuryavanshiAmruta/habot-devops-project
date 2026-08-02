@@ -4,6 +4,8 @@ from rest_framework.views import APIView
 from .serializers import StudentSerializer
 
 API_KEY = "123456789abcdef"
+
+
 class StudentAPIView(APIView):
 
     def post(self, request):
