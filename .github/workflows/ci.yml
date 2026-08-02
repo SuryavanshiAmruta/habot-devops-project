@@ -36,13 +36,17 @@ jobs:
 
       - name: Scan for Secrets
         run: |
-          detect-secrets scan --all-files > .secrets.baseline
+          detect-secrets scan \
+            --all-files \
+            --exclude-files '(^|/)\.git/' \
+            --exclude-files '.*\.terraform/.*' \
+            > .secrets.baseline
+
           if grep -q '"hashed_secret"' .secrets.baseline; then
-          echo "Potential secrets detected!"
-          cat .secrets.baseline
-          exit 1
+            echo "Potential secrets detected!"
+            cat .secrets.baseline
+            exit 1
           fi
-      
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
