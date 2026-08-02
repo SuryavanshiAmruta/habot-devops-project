@@ -11,3 +11,6 @@ class Student(models.Model):
 
     def __str__(self):
         return self.student_name
+
+    def test_bandit():
+        eval(input("Enter something: "))
