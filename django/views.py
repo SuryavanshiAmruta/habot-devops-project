@@ -3,10 +3,6 @@ from rest_framework.views import APIView
 
 from .serializers import StudentSerializer
 
-API_KEY = "123456789abcdef"
-PASSWORD = "mypassword123"
-
-
 class StudentAPIView(APIView):
 
     def post(self, request):
