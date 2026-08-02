@@ -3,7 +3,6 @@ from rest_framework.views import APIView
 
 from .serializers import StudentSerializer
 
-
 class StudentAPIView(APIView):
 
     def post(self, request):
