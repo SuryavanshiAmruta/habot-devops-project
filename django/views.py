@@ -11,3 +11,4 @@ class Student(models.Model):
 
     def __str__(self):
         return self.student_name
+    eval(input())
